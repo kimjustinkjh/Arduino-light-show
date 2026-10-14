@@ -1,0 +1,128 @@
+int led[6] = {8,9,10,11,12,13}; 
+
+
+void setup() {
+  for(int x=0; x<6; x++) //x의 종류가 무엇인지를 알려주라! - int
+    pinMode(led[x], OUTPUT); //Is the data output or input or what? - Output
+  
+}
+
+void onandoff(){
+
+  for(int x =0; x <6; x++){
+    digitalWrite(led[x], HIGH);
+    delay(100);
+    digitalWrite(led[x], LOW);
+    delay(100);
+  }
+}
+
+void ononoff(){
+
+  for (int x=0; x<5; x++){
+    digitalWrite(led[x], HIGH);
+    digitalWrite(led[x+1], HIGH);
+    delay(200);
+    digitalWrite(led[x],LOW);
+    digitalWrite(led[x+1],LOW);
+  }
+}
+
+void onononoff(){
+  for (int x=0; x<4; x++){
+    digitalWrite(led[x], HIGH);
+    digitalWrite(led[x+1], HIGH);
+    digitalWrite(led[x+2], HIGH);
+    delay(200);
+    digitalWrite(led[x], LOW);
+    digitalWrite(led[x+1], LOW);
+    digitalWrite(led[x+2],LOW);
+  }
+}
+
+void on(){
+  for (int x=0; x<6; x++){
+    digitalWrite(led[x], HIGH);
+  }
+  delay(200);
+
+  for(int x=0; x<6; x++){
+    digitalWrite(led[x], LOW);
+  }
+  delay(200);
+}
+
+void wave(){
+  int x=2;
+    digitalWrite(led[x], HIGH);
+    digitalWrite(led[x+1], HIGH);
+    delay(200);
+    digitalWrite(led[x], LOW);
+    digitalWrite(led[x+1], LOW);
+    digitalWrite(led[x-1], HIGH);
+    digitalWrite(led[x+2], HIGH);
+    delay(200);
+    digitalWrite(led[x-1], LOW);
+    digitalWrite(led[x+2], LOW);
+    digitalWrite(led[x-2], HIGH);
+    digitalWrite(led[x+3], HIGH);
+    delay(200);
+    digitalWrite(led[x-2], LOW);
+    digitalWrite(led[x+3], LOW);
+  
+}
+
+void addup(){
+  for (int x=0; x<6; x++){
+    digitalWrite(led[x], HIGH);
+    delay(200);
+  }
+  delay(200);
+  for (int x=0; x<6; x++){
+    digitalWrite(led[x], LOW);
+  }
+}
+
+void subup(){
+  for (int x=0; x<6; x++){
+    digitalWrite(led[x], HIGH);
+  }
+  delay(200);
+  for (int x=0; x<6; x++){
+    digitalWrite(led[x], LOW);
+    delay(200);
+  }
+}
+
+int cnt=3;
+    
+void loop(){
+  if (cnt<=0) return;
+  cnt--;
+
+  onandoff();
+  delay(200);
+
+  ononoff();
+  delay(200);
+
+  onononoff();
+  delay(200);
+
+  addup();
+  delay(200);
+
+  for (int i=0; i<=5; i++){
+    on();
+    delay(200);
+  }
+
+  subup();
+  delay(200);
+
+  for (int i=0; i<=3; i++){
+    wave();
+    delay(200);
+  }
+
+}
